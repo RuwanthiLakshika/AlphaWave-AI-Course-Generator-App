@@ -5,6 +5,7 @@ import { HiLightBulb } from "react-icons/hi2";
 import { HiClipboardDocumentCheck } from "react-icons/hi2";
 import { Button } from '../../components/ui/button';
 import { useState } from 'react';
+import SelectCategory from './_components/SelectCategory';
 
 function CreateCourse() {
 
@@ -51,14 +52,20 @@ const [activeIndex,setActiveIndex]=useState(0);
             </div>
         
         </div>
-
+        
+        <div className='px-10 md:px-20 lg:px-44 mt-10'>
         {/* Component */}
+        {activeIndex==0?<SelectCategory/>:null}
 
         {/* Next Previous Buttton */}
-            <div>
-                <Button onClick={()=>setActiveIndex(activeIndex+1)}>Next</Button>
+            <div className='flex justify-between mt-10'>
+                <Button disabled={activeIndex==0}
+                variant='outline'
+                onClick={()=>setActiveIndex(activeIndex-1)}>Previous</Button>
+                {activeIndex<2&&<Button onClick={()=>setActiveIndex(activeIndex+1)}>Next</Button>}
+                {activeIndex==2 &&<Button onClick={()=>setActiveIndex(activeIndex+1)}>Generate Course Layout</Button>}
             </div>
-
+        </div>
     </div>
   )
 }
