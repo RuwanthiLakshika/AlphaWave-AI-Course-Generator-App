@@ -6,6 +6,8 @@ import { HiClipboardDocumentCheck } from "react-icons/hi2";
 import { Button } from '../../components/ui/button';
 import { useState } from 'react';
 import SelectCategory from './_components/SelectCategory';
+import SelectOption from './_components/SelectOption';
+import TopicDescription from './_components/TopicDescription';
 
 function CreateCourse() {
 
@@ -55,7 +57,9 @@ const [activeIndex,setActiveIndex]=useState(0);
         
         <div className='px-10 md:px-20 lg:px-44 mt-10'>
         {/* Component */}
-        {activeIndex==0?<SelectCategory/>:null}
+        {activeIndex==0?<SelectCategory/>:
+        activeIndex==1?<TopicDescription/>:
+        <SelectOption/>}
 
         {/* Next Previous Buttton */}
             <div className='flex justify-between mt-10'>

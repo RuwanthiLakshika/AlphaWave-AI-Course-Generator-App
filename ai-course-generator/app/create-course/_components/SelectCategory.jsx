@@ -26,7 +26,11 @@ function SelectCategory() {
         },
       ];
   return (
-    <div className='grid grid-cols-3 gap-10 px-10 md:px-20'>
+    <div>
+      <h2 className='my-5'>Select the Course Category</h2>
+      
+    <div className='grid grid-cols-3 gap-10'>
+      
     {CategoryList && CategoryList.length > 0 ? (
       CategoryList.map((item, index) => (
         <div key={item.id}>
@@ -40,6 +44,7 @@ function SelectCategory() {
     ) : (
       <p>No categories available</p>
     )}
+  </div>
   </div>
   )
 }
