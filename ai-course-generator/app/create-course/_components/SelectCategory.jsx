@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Cat } from 'lucide-react'
+import { FcAbout } from "react-icons/fc";
 
 
 function SelectCategory() {
@@ -27,7 +27,10 @@ function SelectCategory() {
       ];
   return (
     <div>
+      <div className="flex items-center space-x-2">
+      <FcAbout />
       <h2 className='my-5'>Select the Course Category</h2>
+      </div>
       
     <div className='grid grid-cols-3 gap-10'>
       
