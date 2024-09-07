@@ -8,8 +8,19 @@ import { useState } from 'react';
 import SelectCategory from './_components/SelectCategory';
 import SelectOption from './_components/SelectOption';
 import TopicDescription from './_components/TopicDescription';
+import { useContext } from 'react';
+import { UserInputContext } from '../_context/UserInputContext';
+import { useEffect } from 'react';
 
 function CreateCourse() {
+
+    const {userCourseInput, setUserCourseInput}=useContext(UserInputContext);
+
+    const [activeIndex,setActiveIndex]=useState(0);
+
+    useEffect(() => {
+        console.log(userCourseInput);
+    },[userCourseInput])
 
     const StepperOptions=[
     {
@@ -30,7 +41,6 @@ function CreateCourse() {
 
 ]
 
-const [activeIndex,setActiveIndex]=useState(0);
   return (
     <div>
         {/* Stepper */}
