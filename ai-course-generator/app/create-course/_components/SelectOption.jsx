@@ -69,8 +69,8 @@ function SelectOption() {
         <FcClapperboard />
           <label className="text-sm">Add Video</label>
         </div>
-          <Select onValueChange={(value)=>handleInuputChange('displayVedio',value)}
-            defaultValue={userCourseInput?.displayVedio}>
+          <Select onValueChange={(value)=>handleInuputChange('displayVideo',value)}
+            defaultValue={userCourseInput?.displayVideo}>
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select" />
             </SelectTrigger>

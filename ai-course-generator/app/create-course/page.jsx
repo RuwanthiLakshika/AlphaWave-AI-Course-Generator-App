@@ -22,6 +22,23 @@ function CreateCourse() {
         console.log(userCourseInput);
     },[userCourseInput])
 
+    // Used to check Next Button enabled or disable status
+    const checkStatus=()=>{
+       if(userCourseInput?.length==0){
+              return true;  
+         }
+         if(activeIndex==0 && (userCourseInput?.category?.length==0 ||userCourseInput?.category==undefined)){
+                return true;
+            }
+            if(activeIndex==1 && (userCourseInput?.topic?.length==0 ||userCourseInput?.topic==undefined)){
+                return true;
+            }
+            else if(activeIndex==2 && (userCourseInput?.level==undefined || userCourseInput?.duration==undefined || userCourseInput?.displayVideo==undefined || userCourseInput?.noOfChapters==undefined)){
+                return true;
+            }
+        return false;
+    }
+
     const StepperOptions=[
     {
         id:1,
@@ -76,8 +93,8 @@ function CreateCourse() {
                 <Button disabled={activeIndex==0}
                 variant='outline'
                 onClick={()=>setActiveIndex(activeIndex-1)}>Previous</Button>
-                {activeIndex<2&&<Button onClick={()=>setActiveIndex(activeIndex+1)}>Next</Button>}
-                {activeIndex==2 &&<Button onClick={()=>setActiveIndex(activeIndex+1)}>Generate Course Layout</Button>}
+                {activeIndex<2&&<Button disabled={checkStatus()} onClick={()=>setActiveIndex(activeIndex+1)}>Next</Button>}
+                {activeIndex==2 &&<Button disabled={checkStatus()} onClick={()=>setActiveIndex(activeIndex+1)}>Generate Course Layout</Button>}
             </div>
         </div>
     </div>
