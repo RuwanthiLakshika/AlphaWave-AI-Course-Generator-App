@@ -39,6 +39,13 @@ function CreateCourse() {
         return false;
     }
 
+    const GenerateCourseLayout=()=>{
+        const BASIC_PROMPT='Generate A Course Tutorial on Following Detail With field as Course Name, Description, Along with Chapter Name, about, Duration:';
+        const USER_INPUT_PROMPT='Category: '+userCourseInput?.category+', Topic: '+userCourseInput?.topic+', Level:'+ userCourseInput?.level+', Duration:'+userCourseInput?.duration+', NoOf Chapters:'+userCourseInput?.noOfChapters+', in JSON format';
+        const FINAL_PROMPT=BASIC_PROMPT+' '+USER_INPUT_PROMPT;
+        console.log(FINAL_PROMPT);
+    }
+
     const StepperOptions=[
     {
         id:1,
@@ -94,7 +101,7 @@ function CreateCourse() {
                 variant='outline'
                 onClick={()=>setActiveIndex(activeIndex-1)}>Previous</Button>
                 {activeIndex<2&&<Button disabled={checkStatus()} onClick={()=>setActiveIndex(activeIndex+1)}>Next</Button>}
-                {activeIndex==2 &&<Button disabled={checkStatus()} onClick={()=>setActiveIndex(activeIndex+1)}>Generate Course Layout</Button>}
+                {activeIndex==2 &&<Button disabled={checkStatus()} onClick={()=>GenerateCourseLayout()}>Generate Course Layout</Button>}
             </div>
         </div>
     </div>
