@@ -12,6 +12,8 @@ import { useContext } from 'react';
 import { UserInputContext } from '../_context/UserInputContext';
 import { useEffect } from 'react';
 import { GenerateCourseLayout_AI } from '.././../configs/AiModel';
+import Loading from './_components/Loading';
+
 
 function CreateCourse() {
 
@@ -114,6 +116,8 @@ function CreateCourse() {
                 {activeIndex==2 &&<Button disabled={checkStatus()} onClick={()=>GenerateCourseLayout()}>Generate Course Layout</Button>}
             </div>
         </div>
+        <Loading loading={loading}/> 
+        {/* Loading Dialog need to fix */}
     </div>
   )
 }
