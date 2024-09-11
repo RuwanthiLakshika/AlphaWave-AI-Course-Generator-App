@@ -11,12 +11,15 @@ import TopicDescription from './_components/TopicDescription';
 import { useContext } from 'react';
 import { UserInputContext } from '../_context/UserInputContext';
 import { useEffect } from 'react';
+import { GenerateCourseLayout_AI } from '.././../configs/AiModel';
 
 function CreateCourse() {
 
     const {userCourseInput, setUserCourseInput}=useContext(UserInputContext);
 
     const [activeIndex,setActiveIndex]=useState(0);
+
+    const [loading,setLoading]=useState(false);
 
     useEffect(() => {
         console.log(userCourseInput);
@@ -39,11 +42,18 @@ function CreateCourse() {
         return false;
     }
 
-    const GenerateCourseLayout=()=>{
+    const GenerateCourseLayout=async()=>{
+        setLoading(true);
         const BASIC_PROMPT='Generate A Course Tutorial on Following Detail With field as Course Name, Description, Along with Chapter Name, about, Duration:';
         const USER_INPUT_PROMPT='Category: '+userCourseInput?.category+', Topic: '+userCourseInput?.topic+', Level:'+ userCourseInput?.level+', Duration:'+userCourseInput?.duration+', NoOf Chapters:'+userCourseInput?.noOfChapters+', in JSON format';
         const FINAL_PROMPT=BASIC_PROMPT+' '+USER_INPUT_PROMPT;
         console.log(FINAL_PROMPT);
+
+        const result = await GenerateCourseLayout_AI.sendMessage(FINAL_PROMPT);
+        console.log(result.response?.text());
+        console.log(JSON.parse(result.response?.text()));
+
+        setLoading(false);
     }
 
     const StepperOptions=[

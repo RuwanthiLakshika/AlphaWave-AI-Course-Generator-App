@@ -26,7 +26,7 @@ const generationConfig = {
 };
 
 // Create and export the chat session
-export const generateCourseLayout = model.startChat({
+export const GenerateCourseLayout_AI = model.startChat({
   generationConfig,
   history: [
     {
