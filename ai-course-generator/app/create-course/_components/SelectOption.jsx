@@ -85,7 +85,7 @@ function SelectOption() {
         <FcDocument />
           <label className="text-sm">No of Chapters</label>
         </div>
-          <Input type="number" className="h-14 text-lg"
+          <Input type="number" className="h-9 text-sm"
           onChange={(event)=>handleInuputChange('noOfChapters',event.target.value)}
           defaultValue={userCourseInput?.noOfChapters}
           />
